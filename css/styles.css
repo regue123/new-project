@@ -5,7 +5,7 @@
 }
 
 body{ 
-    background-image: url(image/connexion.png);
+    background-image:url(image/connexion.png);
     height: 100vh;
     display: flex;
     justify-content: center;

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body{ 
+    background-color: aliceblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container .formulaire {
+    width: 60%;
+}
+.container .formulaire h3 {
+    font-size: 2em;
+    color: #2a2a2a;
+}
+.container .formulaire-image {
+    width: 40%;
+}
+.container .formulaire-image img {
+    width: 300px;
+}
+form {
+    background: rgba(255, 255, 255, .3);
+    width: 430px;
+    height: 570px;
+    border-radius: 20px;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+    text-align: center;  
+}
+::placeholder {
+    color: darkgray;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    font-size: 19px;
+}
+form input.nom,
+form input.prenom {
+    width: 45%;
+}
+form input.tel,
+form input.date,
+form input.horaire {
+    width: 33%;
+}
