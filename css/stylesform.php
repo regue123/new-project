@@ -6,7 +6,7 @@
 }
 
 body{ 
-    background-image: url(image/rdv.gif);
+    background-image: url(image/Fundo9.png);
     background-position: center;
     background-size: cover;
 }

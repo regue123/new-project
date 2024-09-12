@@ -10,42 +10,20 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
        
-        if (isset($_POST['save1'])) {
+        if (isset($_POST['save3'])) {
+
             $email = $_POST['email'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO patient (email, password) VALUES (:email, :password)");
-            $stmt->execute(['email' => $email, 'password' => $password]);
-            echo "Compte créé avec succès !";
-        }
-
-        if (isset($_POST['save2'])) {
             $region = $_POST['region'];
             $town = $_POST['town'];
             $quarter = $_POST['quarter'];
-            $email = $_POST['email']; 
-
-            $stmt = $pdo->prepare("UPDATE patient SET region = :region, town = :town, quarter = :quarter WHERE email = :email");
-            $stmt->execute(['region' => $region, 'town' => $town, 'quarter' => $quarter, 'email' => $email]);
-            echo "Localisation enregistrée avec succès !";
-            echo'
-                <script>
-                
-                    Form1.style.left = "-450px"; 
-                    Form2.style.left = "0";
-                    progress.style.width = "240px";
-                </script>
-            ';
-        }
-
-        if (isset($_POST['save3'])) {
             $name = $_POST['name'];
             $old = $_POST['old'];
             $mobile = $_POST['mobile'];
-            $email = $_POST['email'];
 
-            $stmt = $pdo->prepare("UPDATE patient SET name = :name, old = :old, mobile = :mobile WHERE email = :email");
-            $stmt->execute(['name' => $name, 'old' => $old, 'mobile' => $mobile, 'email' => $email]);
-            echo "Informations personnelles enregistrées avec succès !";
+            $stmt = $pdo->prepare("INSERT INTO patient (email, password, region, town, quarter, name, old, mobile) VALUES (:email, :password, :region, :town, :quarter, :name, :old, :mobile)");
+            $stmt->execute(['email' => $email, 'password' => $password, 'region' => $region, 'town' => $town, 'quarter' => $quarter, 'name' => $name, 'old' => $old, 'mobile' => $mobile]);
+            echo "Compte créé avec succès !";
         }
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
@@ -58,43 +36,42 @@ try {
 <head>
     <meta charset="UTF-8" />
     <title>Formulaire d'inscription-patient</title>
-    <link rel="stylesheet" href="css/stylesform.css">
-  
+    <?php include_once('css/stylesform.php')?>
 </head>
 <body>
     <div class="container">
-
         <form action="#" method="POST" id="Form1">
-            <h3>CREATE AN ACCOUNT</h3>
-            <input type="email" placeholder="Email" name="email" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <div class="btn-box">
-            <button type="button" id="Next1">Next</button>
-            </div>
-        </form>
+            <section id="Form1">
+                <h3>CREATE AN ACCOUNT</h3>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <div class="btn-box">
+                  <button type="button" id="Next1">Next</button>
+                </div>
+            </section>
 
-        <form action="#" method="POST" id="Form2">
-            <h3>LOCALISATION</h3>
-            <input type="hidden" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
-            <input type="text" placeholder="Region" name="region" required>
-            <input type="text" placeholder="Town" name="town" required>
-            <input type="text" placeholder="Quarter" name="quarter" required>
-            <div class="btn-box">
-                <button type="button" id="Back1">Back</button>
-                <button type="button" id="Next2">Next</button>
-            </div>
-        </form>
+            <section id="Form2">
+                <h3>LOCALISATION</h3>
+                <input type="text" placeholder="Region" name="region" required>
+                <input type="text" placeholder="Town" name="town" required>
+                <input type="text" placeholder="Quarter" name="quarter" required>
+                <div class="btn-box">
+                  <button type="button" id="Back1">Back</button>
+                  <button type="button" id="Next2">Next</button>
+                </div>
+            </section>
 
-        <form action="#" method="POST" id="Form3">
-            <h3>PERSONNAL INFOS</h3>
-            <input type="hidden" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
-            <input type="text" placeholder="Name" name="name" required>
-            <input type="number" placeholder="Old" name="old" required>
-            <input type="tel" placeholder="Mobile No." name="mobile" required>
-            <div class="btn-box">
-                <button type="button" id="Back2">Back</button>
-                <button type="submit"  name="save3">Submit</button>
-            </div>
+            <section id="Form3">
+                <h3>PERSONNAL INFOS</h3>
+                <input type="text" placeholder="Name" name="name" required>
+                <input type="number" placeholder="Old" name="old" required>
+                <input type="tel" placeholder="Mobile No." name="mobile" required>
+                <div class="btn-box">
+                  <button type="button" id="Back2">Back</button>
+                  <button type="submit"  name="save3">Submit</button>
+                </div>
+            </section>
+
         </form>
 
         <div class="step-row">

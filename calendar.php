@@ -1,6 +1,4 @@
 <?php
-session_start()
-
 
 $servername = 'localhost';
 $username = 'root'; 
@@ -52,23 +50,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
         
      <div class="container">
-        <div class="formulaire">
+        <div>
             <h3>Prendre rendez-vous</h3>
             <form action="" method="post">
-            <input type="text" placeholder="Name" name="name" required="" class="nom">
-            <input type="text" placeholder="Prename" name="prename" required="" class="prenom">
-            <input type="tel" placeholder="Mobile" name="mobile" required="" class="tel">
-            <input type="date" name="date" required="" class="date">
-            <input type="time" placeholder="horaire" name="horaire" required="" class="horaire">
-            <input type="submit" value="Valider">
+              <input type="text" placeholder="Name" name="name" required="" class="nom">
+              <input type="text" placeholder="Prename" name="prename" required="" class="prenom">
+              <input type="tel" placeholder="Mobile" name="mobile" required="" class="tel">
+              <input type="date" name="date" required="" class="date">
+              <input type="time" placeholder="horaire" name="horaire" required="" class="horaire">
+              <button class="submit-btn">Valider</button>
             </form>
         </div>
-        <div class="formulaire-image">
-            <img src="image/rdv.gif" alt="">
-        </div>
-     </div>
-        </section>
-        
-    
+          
 </body>
 </html>
